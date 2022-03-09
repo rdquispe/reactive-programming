@@ -4,9 +4,13 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.subjects.PublishSubject
 import io.reactivex.rxjava3.subjects.Subject
+import org.slf4j.LoggerFactory
 
 
 object Subjects {
+
+    val LOG = LoggerFactory.getLogger(Subjects::class.java)
+
     @Throws(InterruptedException::class)
     @JvmStatic
     fun main(args: Array<String>) {
@@ -16,10 +20,10 @@ object Subjects {
             .subscribeOn(Schedulers.computation())
 
         val subject: Subject<Any> = PublishSubject.create()
-        subject.subscribe { e -> println("Subject: $e") } //Observer 1
+        subject.subscribe { e -> LOG.info("Subject: $e") } //Observer 1
 
-		src1.subscribe{e -> println(e)}
-		src2.subscribe{e -> println(e)}
+		src1.subscribe{e -> LOG.info(e.toString())}
+		src2.subscribe{e -> LOG.info(e.toString())}
 
         Thread.sleep(9000)
     }
