@@ -3,7 +3,6 @@ package concurrency_and_parallelization
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import org.slf4j.LoggerFactory
-import java.util.Locale
 
 
 object SubscribeOn {
